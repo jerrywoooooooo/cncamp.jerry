@@ -6,19 +6,6 @@
 
 package main
 
-import (
-	"flag"
-	"io"
-	"net/http"
-	//_ "net/http/pprof"
-)
-
 func main() {
-	flag.Set("v", "4")
-	http.HandleFunc("/healthz", healthz)
 
-}
-
-func healthz(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "200\n")
 }
