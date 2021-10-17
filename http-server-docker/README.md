@@ -11,13 +11,20 @@ docker push  jerrywoooooooo/http-server:v1.0
 通过 Docker 命令本地启动 httpserver。
 ```shell
 docker run -p 8080:80 -P -d jerrywoooooooo/http-server:v1.0
+# 验证
+curl http://127.0.0.1:8080/healthz
 ```
 通过 nsenter 进入容器查看 IP 配置。
 ```shell
-# get containerid
-docker ps | grep  jerrywoooooooo/http-server:v1.0
+# 查看ip
+docker inspect --format "{{ .State.Pid }}" `docker ps | grep  jerrywoooooooo/http-server:v1.0 | awk '{print $1}'` | xargs  -i -t nsenter -t {} -n ip addr show 
+
+# or 
+
+# get container id
+docker ps | grep  jerrywoooooooo/http-server:v1.0 | awk '{print $1}'
 # get pid
 docker inspect --format "{{ .State.Pid }}" <containerid>
 # show ip
-nsenter -t <pid> -n ip addr show
+nsenter -n ip addr show -t <pid> 
 ```
