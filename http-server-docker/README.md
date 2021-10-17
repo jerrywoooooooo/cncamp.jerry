@@ -10,10 +10,14 @@ docker push  jerrywoooooooo/http-server:v1.0
 ```
 通过 Docker 命令本地启动 httpserver。
 ```shell
-docker run -d jerrywoooooooo/http-server:v1.0
+docker run -p 8080:80 -P -d jerrywoooooooo/http-server:v1.0
 ```
 通过 nsenter 进入容器查看 IP 配置。
 ```shell
-PID=$(docker inspect --format "{{ .State.Pid }}" f3154b1dfac6)
-nsenter --target $PID --mount --uts --ipc --net --pid
+# get containerid
+docker ps | grep  jerrywoooooooo/http-server:v1.0
+# get pid
+docker inspect --format "{{ .State.Pid }}" <containerid>
+# show ip
+nsenter -t <pid> -n ip addr show
 ```
