@@ -10,7 +10,7 @@ docker push  jerrywoooooooo/http-server:v1.0
 ```
 通过 Docker 命令本地启动 httpserver。
 ```shell
-docker run -p 8080:80 -P -d jerrywoooooooo/http-server:v1.0
+docker run -p 8080:80 -d jerrywoooooooo/http-server:v1.0
 # 验证
 curl http://127.0.0.1:8080/healthz
 ```
