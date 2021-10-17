@@ -10,9 +10,7 @@ ENV GO111MODULE=on \
 WORKDIR /home/app/
 
 COPY build.sh ./
-RUN chmod +x build.sh
-
-CMD ["./build.sh"]
+RUN chmod +x build.sh && sh build.sh
 
 # 运行环境
 FROM busybox:latest as runner
