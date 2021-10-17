@@ -1,5 +1,7 @@
-git clone https://github.com/jerrywoooooooo/cncamp.jerry.git
+git clone https://gitee.com/jerrywoooooooo/cncamp.jerry.git
 
 cd cncamp.jerry/http-server
 
-go build .
+go build -mod=mod .
+
+pwd && ll

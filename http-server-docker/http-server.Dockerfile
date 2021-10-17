@@ -7,7 +7,7 @@ ENV GO111MODULE=on \
     CGO_ENABLED=0 \
 	GOPROXY="https://goproxy.cn,direct"
 
-WORKDIR /home/app/
+WORKDIR /home/app/go
 
 COPY build.sh ./
 RUN chmod +x build.sh && sh build.sh
@@ -17,7 +17,7 @@ FROM busybox:latest as runner
 
 WORKDIR /home/app/
 
-COPY --from=builder http-server/http-server .
+COPY --from=builder /home/app/go/cncamp.jerry/http-server/http-server .
 
 COPY run.sh  ./
 RUN chmod +x run.sh
