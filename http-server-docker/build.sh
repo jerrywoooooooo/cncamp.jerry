@@ -1,5 +1,5 @@
 git clone https://github.com/jerrywoooooooo/cncamp.jerry.git
 
-cd http-server
+cd cncamp.jerry/http-server
 
 go build .
