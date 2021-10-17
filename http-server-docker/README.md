@@ -14,5 +14,6 @@ docker run -d jerrywoooooooo/http-server:v1.0
 ```
 通过 nsenter 进入容器查看 IP 配置。
 ```shell
-
+PID=$(docker inspect --format "{{ .State.Pid }}" f3154b1dfac6)
+nsenter --target $PID --mount --uts --ipc --net --pid
 ```

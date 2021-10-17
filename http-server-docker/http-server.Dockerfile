@@ -14,13 +14,12 @@ COPY build.sh ./
 RUN chmod +x build.sh && sh build.sh
 
 # 运行环境
-FROM busybox:latest as runner
+FROM ubuntu:latest as runner
 
 WORKDIR /home/app/
 
 COPY --from=builder /home/app/go/cncamp.jerry/http-server/http-server .
-
-EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["./http-server"]
 
 
